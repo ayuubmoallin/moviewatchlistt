@@ -13,20 +13,20 @@ function App() {
   const getData = async () => {
     try {
       const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`
-      const response = await axios.get(API_URL, {
-        headers: {
-          'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`
-        }
-      });
+
+
+      const response = await axios.get(API_URL);
+
       const movies = response.data.results;
+
       setMovieList(movies);
+      
     } catch (error) {
       console.error(error);
     }
   };
   const addMovie = (movie) => {
     setWatchList((prevWatchlist) => [...prevWatchlist, movie]);
-    alert("Movie has been added to watchlist. See at the bottom of he page")
   };
 
   function removeMovie(movie) {
